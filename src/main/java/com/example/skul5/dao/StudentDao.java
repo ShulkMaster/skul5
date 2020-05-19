@@ -24,7 +24,7 @@ public class StudentDao implements Dao {
     }
 
     @Override
-    public Student findOne(Integer id) throws DataAccessException {
-        return em.find(Student.class, id);
+    public Student findOne(String code) throws DataAccessException {
+        return em.find(Student.class, code);
     }
 }

@@ -1,6 +1,5 @@
 package com.example.skul5.config;
 
-import com.example.skul5.dao.StudentDao;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
@@ -39,13 +38,8 @@ public class WebConfig {
         reg.addResourceHandler("/resources/**")
                 .addResourceLocations("/resources/");
 
-        reg.addResourceHandler("/webjars/**")
+        reg.addResourceHandler("webjars/**")
                 .addResourceLocations("/webjars/");
-    }
-
-    @Bean
-    public StudentDao getDao() {
-        return new StudentDao();
     }
 
 }

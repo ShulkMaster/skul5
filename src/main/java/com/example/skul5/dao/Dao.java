@@ -9,6 +9,6 @@ public interface Dao {
 
     List<Student> findAll() throws DataAccessException;
 
-    Student findOne(Integer id) throws DataAccessException;
+    Student findOne(String code) throws DataAccessException;
 
 }

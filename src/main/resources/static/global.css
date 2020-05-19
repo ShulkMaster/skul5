@@ -1,0 +1,12 @@
+
+fieldset {
+    border: none;
+    padding: 1em;
+}
+
+.container {
+    margin: 1em auto;
+    width: 80%;
+    padding: 1em;
+    border-radius: 1em;
+}

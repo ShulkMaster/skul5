@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(schema = "public", name = "Student")
@@ -14,63 +16,49 @@ public class Student {
 
     @Id
     @Column(name = "id")
-    private Integer code;
+    @NotEmpty(message = "El carnet es obligatorio")
+    @Size(message = "El carnet debe tener maximo 10 caracteres", max = 10)
+    private String code;
 
     @Column(name = "name")
-    private String Name;
+    @NotEmpty(message = "El nombre es obligatorio")
+    @Size(message = "El nombre debe tener maximo 50 caracteres", max = 50)
+    private String name;
 
     @Column(name = "lastname")
-    private String LastName;
+    @NotEmpty(message = "El apellido es obligatorio")
+    @Size(message = "El apellido debe tener maximo 50 caracteres", max = 50)
+    private String lastName;
 
-    @Column(name = "age")
-    private Integer age;
+    @Column(name = "career")
+    @NotEmpty(message = "La carrera es obligatoria")
+    @Size(message = "La carrera debe tener maximo 100 caracteres", max = 100)
+    private String career;
 
-    @Column(name = "status")
-    private Boolean status;
 
-
-    public Integer getCode() {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(Integer code) {
+    public void setCode(String code) {
         this.code = code;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getLastName() {
-        return LastName;
+        return lastName;
     }
 
-    public void setLastName(String lastName) {
-        LastName = lastName;
-    }
+    public void setLastName(String lastName) { this.lastName = lastName; }
 
-    public Integer getAge() {
-        return age;
-    }
+    public String getCareer() { return career; }
 
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public Boolean getStatus() {
-        return status;
-    }
-
-    public void setStatus(Boolean status) {
-        this.status = status;
-    }
-
-    public String getStateDelegate() {
-        if (this.status == null) return "";
-        return status ? "Active" : "Inactive";
-    }
+    public void setCareer(String career) { this.career = career; }
 }

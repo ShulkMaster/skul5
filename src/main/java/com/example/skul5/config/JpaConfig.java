@@ -36,9 +36,8 @@ public class JpaConfig {
     private Properties hibernateProperties() {
         Properties props = new Properties();
         props.setProperty("hibernate.show_sql", "true");
-        props.setProperty("hibernate.dialect", "org.hibernate.dialect.postgreSQLDialect");
+        props.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
         return props;
     }
-
 
 }
