@@ -8,19 +8,19 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(schema = "public", name = "Student")
+@Table(schema = "public", name = "student")
 public class Student {
 
     public Student() {
     }
 
     @Id
-    @Column(name = "id")
+    @Column(name = "code")
     @NotEmpty(message = "El carnet es obligatorio")
     @Size(message = "El carnet debe tener maximo 10 caracteres", max = 10)
     private String code;
 
-    @Column(name = "name")
+    @Column(name = "student_name")
     @NotEmpty(message = "El nombre es obligatorio")
     @Size(message = "El nombre debe tener maximo 50 caracteres", max = 50)
     private String name;

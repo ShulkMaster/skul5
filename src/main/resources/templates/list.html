@@ -1,10 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Lista</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="00088116">
+
+    <title>Skul 5</title>
+
+    <link href="webjars/materialize-css/dist/css/materialize.min.css" rel="stylesheet">
+    <link href="global.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-
+<header>
+    <nav>
+        <div class="nav-wrapper black">
+            <a href="/" class="brand-logo">Skul 5</a>
+            <ul id="nav-mobile" class="right">
+                <li><a href="/listado">Listado</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<main>
+    <div class="container z-depth-4 separable">
+        <h3 class="center-align">Lista de estudiantes</h3>
+        <table>
+            <thead>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Carnet</th>
+            <th>Carrera</th>
+            </thead>
+            <th:block th:each="student, row:${students}">
+                <tr>
+                    <td th:text="${student.name}"></td>
+                    <td th:text="${student.lastName}"></td>
+                    <td th:text="${student.code}"></td>
+                    <td th:text="${student.career}"></td>
+                </tr>
+            </th:block>
+        </table>
+        <a href="/" class="waves-effect waves-light btn">Volver</a>
+    </div>
+</main>
+<footer class="page-footer black">
+    <div class="footer-copyright">
+        <div class="container">
+            <p class="grey-text text-lighten-4 right">
+                copyright 2020© under apache 2.0 licence
+            </p>
+            <p class="grey-text text-lighten-4">Autor: 00088116</p>
+        </div>
+    </div>
+</footer>
+<script src="webjars/materialize-css/dist/js/materialize.min.js"></script>
 </body>
 </html>
