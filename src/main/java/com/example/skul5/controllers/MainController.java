@@ -50,6 +50,8 @@ public class MainController {
         ModelAndView vm = new ModelAndView();
         if (!result.hasErrors()) {
             vm.addObject("student", new Student());
+        } else {
+            dao.save(student);
         }
         vm.setViewName("index");
         return vm;

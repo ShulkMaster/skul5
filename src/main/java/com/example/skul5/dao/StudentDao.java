@@ -27,4 +27,10 @@ public class StudentDao implements Dao {
     public Student findOne(String code) throws DataAccessException {
         return em.find(Student.class, code);
     }
+
+    @Override
+    public void save(Student student) {
+     em.persist(student);
+    }
+
 }
