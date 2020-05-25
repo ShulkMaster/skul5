@@ -11,28 +11,45 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
-public class StudentDao implements Dao {
+public class StudentDao implements Dao<Student> {
 
-    private static final String getAllQuery = "SELECT * FROM PUBLIC.STUDENT";
+    private static final String getAllQuery = "SELECT * FROM PUBLIC.estudiante";
 
-    @PersistenceContext(unitName = "skul5")
-    private EntityManager em;
+    @PersistenceContext(unitName = "DBEscuela")
+    private final EntityManager em;
+
+    public StudentDao(EntityManager em) {
+        this.em = em;
+    }
 
     @Override
-    public List<Student> findAll() throws DataAccessException {
+    public List<Student> readAll() throws DataAccessException {
+        System.out.println("Reading all");
         Query query = em.createNativeQuery(getAllQuery, Student.class);
         return query.getResultList();
     }
 
     @Override
-    public Student findOne(String code) throws DataAccessException {
-        return em.find(Student.class, code);
+    public void create(Student student) {
+        System.out.println("Bueno llego aqui");
+        em.persist(student);
     }
 
     @Override
-    @Transactional
-    public void save(Student student) {
-     em.persist(student);
+    public Student read(Integer id) throws DataAccessException {
+        return em.find(Student.class, id);
+    }
+
+    @Override
+    public void update(Student model) throws DataAccessException {
+        em.merge(model);
+        em.flush();
+    }
+
+    @Override
+    public void delete(Integer id) throws DataAccessException {
+        Student student = em.find(Student.class, id);
+        em.remove(student);
     }
 
 }

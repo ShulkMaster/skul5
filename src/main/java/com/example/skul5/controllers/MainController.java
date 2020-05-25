@@ -1,7 +1,7 @@
 package com.example.skul5.controllers;
 
-import com.example.skul5.dao.StudentDao;
 import com.example.skul5.domain.Student;
+import com.example.skul5.service.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
@@ -12,17 +12,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 
 @Controller
 @Component
 public class MainController {
 
-    private final StudentDao dao;
+    private final Service<Student> service;
 
     @Autowired
-    public MainController(StudentDao dao) {
-        this.dao = dao;
+    public MainController(Service<Student> service) {
+        this.service = service;
     }
 
     @GetMapping(value = {"/", "/index", "/inicio"})
@@ -36,11 +35,7 @@ public class MainController {
     @GetMapping("/listado")
     public ModelAndView Student() {
         ModelAndView vm = new ModelAndView();
-        try {
-            vm.addObject("students", dao.findAll());
-        } catch (Exception ex) {
-            vm.addObject("students", new ArrayList<Student>());
-        }
+        vm.addObject("students", service.getAll());
         vm.setViewName("list");
         return vm;
     }
@@ -50,7 +45,7 @@ public class MainController {
         ModelAndView vm = new ModelAndView();
         if (!result.hasErrors()) {
             vm.addObject("student", new Student());
-            dao.save(student);
+            service.save(student);
         }
         vm.setViewName("index");
         return vm;
