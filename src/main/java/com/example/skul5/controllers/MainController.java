@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
@@ -48,6 +46,15 @@ public class MainController {
             service.save(student);
         }
         vm.setViewName("index");
+        return vm;
+    }
+
+    @PostMapping(value = "/delete", params = "action=delete")
+    public ModelAndView delete(@RequestParam(value = "id") int id) {
+        ModelAndView vm = new ModelAndView();
+        vm.addObject("id", id);
+        vm.addObject("deleted", service.delete(id));
+        vm.setViewName("deleted");
         return vm;
     }
 }

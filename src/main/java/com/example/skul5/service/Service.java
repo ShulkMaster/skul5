@@ -27,7 +27,7 @@ public abstract class Service<T extends Model> {
     }
 
     @Nullable
-    T findOne(Integer code) {
+    public T findOne(Integer code) {
         try {
             return dao.read(code);
         } catch (DataAccessException ex) {
@@ -50,11 +50,13 @@ public abstract class Service<T extends Model> {
     }
 
     @Transactional
-    void delete(Integer code) {
+    public boolean delete(Integer code) {
         try {
             dao.delete(code);
+            return true;
         } catch (DataAccessException ex) {
             ex.printStackTrace();
+            return false;
         }
     }
 

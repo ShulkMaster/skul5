@@ -43,7 +43,18 @@
                 </tr>
             </th:block>
         </table>
-        <a href="/" class="waves-effect waves-light btn">Volver</a>
+        <form th:action="@{/delete}" method="post">
+            <div class="input-field">
+                <label for="input-id">Id</label>
+                <i class="material-icons prefix">person</i>
+                <input type="number" id="input-id" th:name="id" class="validate"
+                       placeholder="1"
+                       aria-describedby="name-help"
+                       data-length="50">
+            </div>
+            <button class="btn primary" type="submit" name="action" value="delete">Eliminar</button>
+            <button class="btn primary" type="submit" name="action" value="editar">Editar</button>
+        </form>
     </div>
 </main>
 <footer class="page-footer black">
