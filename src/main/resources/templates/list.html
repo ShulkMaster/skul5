@@ -36,6 +36,7 @@
             </thead>
             <th:block th:each="student, row:${students}">
                 <tr>
+                    <td th:text="${student.code}"></td>
                     <td th:text="${student.name}"></td>
                     <td th:text="${student.lastName}"></td>
                     <td th:text="${student.code}"></td>
@@ -53,7 +54,7 @@
                        data-length="50">
             </div>
             <button class="btn primary" type="submit" name="action" value="delete">Eliminar</button>
-            <button class="btn primary" type="submit" name="action" value="editar">Editar</button>
+            <button class="btn primary" type="submit" name="action" value="edit">Editar</button>
         </form>
     </div>
 </main>

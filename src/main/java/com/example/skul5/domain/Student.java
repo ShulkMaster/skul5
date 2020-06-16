@@ -36,11 +36,11 @@ public class Student implements Model {
     @Size(message = "La carrera debe tener maximo 100 caracteres", max = 100)
     private String career;
 
-    @Override
-    public Integer getId() {
+    public Integer setCode() {
         return code;
     }
 
+    @Override
     public Integer getCode() {
         return code;
     }

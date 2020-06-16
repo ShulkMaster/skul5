@@ -57,4 +57,14 @@ public class MainController {
         vm.setViewName("deleted");
         return vm;
     }
+
+    @PostMapping(value = "/delete", params = "action=edit")
+    public ModelAndView Edit(@RequestParam(value = "id") int id) {
+        ModelAndView vm = new ModelAndView();
+        Student student = service.findOne(id);
+        student.setCode(id);
+        vm.addObject("student", student);
+        vm.setViewName("index");
+        return vm;
+    }
 }
