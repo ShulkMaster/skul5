@@ -42,6 +42,7 @@ public class MainController {
     public ModelAndView register(@Valid @ModelAttribute Student student, BindingResult result) {
         ModelAndView vm = new ModelAndView();
         if (!result.hasErrors()) {
+            System.out.println("El registro es " + student.getCode());
             vm.addObject("student", new Student());
             service.save(student);
         }
